@@ -1,0 +1,25 @@
+---
+title: "Esc2021Markdown"
+author: "Eiki"
+date: "23/04/2021"
+output: html_document
+---
+
+Sources:
+- ESC odds: https://eurovisionworld.com/odds/eurovision
+  - Odds for 2021 are not yet implemented
+
+
+A chart showing place predicted by betting markets and final places in ESC
+```{r}
+EvBettingData %>%
+  group_by(Year) %>%
+  mutate(OddsRank = dense_rank(AverageOdds)) %>%
+  ggplot() + 
+  aes(y = Place, x = OddsRank) + 
+  geom_point(color = "#073b4c", size = 2) +
+  facet_wrap(~Year) + 
+  geom_abline(intercept = 0, slope = 1) 
+
+```
+
