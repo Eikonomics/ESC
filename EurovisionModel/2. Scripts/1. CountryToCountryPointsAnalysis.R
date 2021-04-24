@@ -4,6 +4,7 @@ library(ggplot2)
 library(readxl)
 
 EvPointsTimeSeries <- read_xlsx("1. RawData/eurovision_song_contest_1975_2019v5.xlsx", sheet = "Data")
+write.csv("3. CleanData//EvPointsTimeSeries1975-2019.csv")
 
 
 unique(str_sort(EvPointsTimeSeries$ToCountry))
